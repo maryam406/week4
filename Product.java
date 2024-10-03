@@ -1,71 +1,68 @@
 import java.util.Objects;
 public class Product{
- 
-           private String name;
-           private String id;
-           private int quantity;
-           private double price;
-          
-          private static int counter=0;
-
-
-
-         public Product(String name, double price,int quantity) {
-           this.name=name;
-          this.id=String.format("%03d", ++counter);
-          this.quantity=quantity;}
-
-        public Product(String name, double price) {
-           this(name, price, 0);
+	private String name;
+	private double price;
+	private String id;
+	private int quantity;
+	private static int counter=0;
+	
+	//constructor
+	public Product( String name, double price, int quantity) {
+        this.id = String.format("%03d", ++counter);
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
-        public Product(String name) {
-            this(name,0);}// calling of a constructor
-       
-          
-         // setter and getter method
-         public void setname(String n){
-            this.name=n;}      
 
-         public String getname(){
-               return name;}
-         
-         public void setid(String i){
-                 this.id=i;}
-         
-          public String getid(){
-                   return id;}
+    public Product(String name, double price) {
+        this(name, price, 0);
+    }
 
-         public void setquantity(int q){
-                this.quantity=quantity;}
-     
-         public int getquantity(){
-                   return quantity;}
+    public Product(String name) {
+        this(name,0);
+    }
+	
+	//setter methods
+	public void setName(String name){
+		this.name=name;
+	} 
+	public String getName() {
+        return name;
+    }
+	
+	public void setPrice(double price){
+		this.price=price;
+	} 
+	public double getPrice() {
+        return price;
+    }
+	
+	public void setQuantity(int quantity){
+		this.quantity=quantity;
+	} 
+	public int getQuantity() {
+        return quantity;
+    }
+	
+	public void setId(String id){
+		this.id=id;
+	} 
+	public String getId() {
+        return id;
+    }
+	
+	public static int getCounter() {
+        return counter;
+    }
 
-          public double getPrice() {
-             return price; }
-
-        public void setPrice(double price) {
-          this.price = price; }
-
-
-          public static int getCounter() {
-            return counter; }
-
-         public static void setCounter(int counter) {
-              Product.counter = counter;}
-
-          
-      @Override
-       public boolean equals(Object o) {
-         if(this == o){
-             return true;}
-        if(o == null || getClass() != o.getClass()){
-              return false;}
+    public static void setCounter(int counter) {
+        Product.counter = counter;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return  Objects.equals(id, product.id) ;
     }
-       @Override
-        public String toString() {
-        return String.format("%s %s %f %d",id,name, price, quantity );}
-
-} 
+	
